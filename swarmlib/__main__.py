@@ -88,5 +88,14 @@ def run_swarm():
         parser.print_usage()
 
 
+def _run_woa(args):
+    LOGGER.debug('Start the whale optimization algorithm with parameters="%s"', args)
+    args['function'] = FUNCTIONS[args['function']]
+
+    problem = WOAProblem(**args)
+    problem.solve()
+    problem.replay()
+
+
 if __name__ == '__main__':
     run_swarm()
