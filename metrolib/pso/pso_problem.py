@@ -27,4 +27,19 @@ class PSOProblem(ProblemBase):
         self._visualizer = BaseVisualizer(**kwargs)
         self._visualizer.add_data(positions=positions)
 
-   
+    def solve(self) -> Particle:
+        # And also update global_best_particle
+        for _ in range(self.__iteration_number):
+
+            # Update global best
+            global_best_particle = min(self.__particles)
+
+            for particle in self.__particles:
+                particle.step(global_best_particle.position)
+
+            # Add data for plot
+            positions = [particle.position for particle in self.__particles]
+            self._visualizer.add_data(positions=positions)
+
+        LOGGER.info('Last best solution="%s" at position="%s"', global_best_particle.value, global_best_particle.position)
+        return global_best_particle
