@@ -7,6 +7,14 @@ from ..util.functions import FUNCTIONS
 LOGGER = logging.getLogger(__name__)
 
 
+def _run_pso(args):
+    LOGGER.info('Start particle swarm optimization with parameters="%s"', args)
+    args['function'] = FUNCTIONS[args['function']]
+
+    problem = PSOProblem(**args)
+    problem.solve()
+    problem.replay()
+
 
 def configure_parser(sub_parsers):
     """
