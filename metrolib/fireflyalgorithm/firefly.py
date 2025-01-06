@@ -15,7 +15,14 @@ class Firefly(Coordinate):
         self.__beta = kwargs.get('beta', 1)
         self.__gamma = kwargs.get('gamma', 0.97)
 
-   
+    def move_towards(self, better_position):
+        # euclidean distance
+        distance = np.linalg.norm(self._position - better_position)
+
+        # update position
+        self._position = self._position + \
+            self.__beta*np.exp(-self.__gamma*(distance**2)) * (better_position-self._position) + \
+            self.__alpha*(self._random.uniform(0, 1)-0.5)
 
     def random_walk(self, area):
         self._position = np.array([self._random.uniform(cord-area, cord+area) for cord in self._position])

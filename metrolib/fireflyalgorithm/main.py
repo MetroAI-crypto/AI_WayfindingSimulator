@@ -7,6 +7,13 @@ from ..util.functions import FUNCTIONS
 LOGGER = logging.getLogger(__name__)
 
 
+def _run_firefly_algorithm(args):
+    LOGGER.info('Start firefly algorithm with parameters="%s"', args)
+    args['function'] = FUNCTIONS[args['function']]
+
+    problem = FireflyProblem(**args)
+    problem.solve()
+    problem.replay()
 
 
 def configure_parser(sub_parsers):
