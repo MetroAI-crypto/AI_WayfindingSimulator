@@ -1,7 +1,8 @@
 
 from abc import ABC, abstractmethod
 from numpy.random import default_rng
-
+from ..util.coordinate import Coordinate
+from ..util.visualizer_base import VisualizerBase
 
 
 class ProblemBase(ABC):
@@ -13,4 +14,8 @@ class ProblemBase(ABC):
     def solve(self) -> Coordinate:
         pass
 
-   
+    def replay(self) -> None:
+        """
+        Start the problems visualization.
+        """
+        self._visualizer.replay()
