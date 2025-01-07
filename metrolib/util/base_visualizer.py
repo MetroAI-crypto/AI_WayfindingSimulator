@@ -102,10 +102,15 @@ class BaseVisualizer(VisualizerBase):
 
         # Calculate scaled position and velocity
         pos = self._positions[self._index]
+        vel = self._velocities[self._index]
         pos_scaled = np.clip(pos + scale * vel, a_min=self.__lower_boundary, a_max=self.__upper_boundary)
         vel_scaled = (1-scale)*vel
 
-        
+        # Update the particle position
+        self.__particles.set_offsets(np.transpose(pos_scaled))
+        self.__particles.set_sizes(np.full(len(pos_scaled[0]), self._marker_size**2))
+        self.__particles.set_color(self._marker_colors)
+
         # Update the velocities
         self.__particle_vel = ax.quiver(pos_scaled[0], pos_scaled[1], vel_scaled[0], vel_scaled[1], angles='xy', scale_units='xy', scale=1, color=self._vel_color, width=self._marker_size*0.001)
 
