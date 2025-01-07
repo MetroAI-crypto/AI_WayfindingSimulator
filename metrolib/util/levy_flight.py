@@ -24,5 +24,9 @@ def levy_flight(start: np.ndarray, alpha: float, param_lambda: float, gen: np.ra
 
     sigma2 = 1
 
+    u_vec = gen.normal(0, sigma1, size=2)
+    v_vec = gen.normal(0, sigma2, size=2)
+
+    step_length = u_vec / np.power(np.fabs(v_vec), 1 / param_lambda)
 
     return start + alpha * step_length

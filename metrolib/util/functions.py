@@ -18,4 +18,10 @@ def wrap_landscapes_func(landscapes_func) -> Callable[[np.ndarray], float]:
 
 
 # Add all functions from landscapes.single_objective
-
+FUNCTIONS = {
+    name: wrap_landscapes_func(func)
+    for (name, func) in inspect.getmembers(
+        landscapes.single_objective, inspect.isfunction
+    )
+    if name not in ['colville', 'wolfe']  # Don't include 3D and 4D functions
+}
