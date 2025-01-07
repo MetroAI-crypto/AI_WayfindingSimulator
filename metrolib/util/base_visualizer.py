@@ -28,13 +28,18 @@ class BaseVisualizer(VisualizerBase):
         self._marker_color = '#0078D7' if self._dark else '#FF0000'
         self._marker_colors = np.empty(0)
 
+        self._positions = []
         self._velocities = []
         self.__frame_interval = 50  # ms
 
         if self._dark:
             plt.style.use('dark_background')
 
-       
+        x = np.linspace(self.__lower_boundary, self.__upper_boundary, 400)
+        y = np.linspace(self.__lower_boundary, self.__upper_boundary, 400)
+        X, Y = np.meshgrid(x, y)
+        z = self.__function([X, Y])
+
         self._fig = plt.figure()
 
         ax = self._fig.add_subplot(1, 1, 1, label='BaseAxis')
@@ -65,7 +70,18 @@ class BaseVisualizer(VisualizerBase):
         # Calculate at time t the velocity for step t-1
         self._velocities.append(self._positions[-1] - self._positions[-2])
 
-    
+    def replay(self, **kwargs):
+        # Overwrite last and first velocities with zeroes
+        self._velocities.append(np.zeros(self._velocities[-1].shape))
+
+        # Amount of frames to play considering one interval should last __interval ms.
+        frames = int(self.__intervals*self.__interval_ms/self.__frame_interval)
+
+        # iteration_number+1 for initialization frame
+        _ = animation.FuncAnimation(self._fig, self._animate, frames=frames, interval=self.__frame_interval,
+                                    blit=True, init_func=self._init, repeat=self.__continuous, fargs=[frames])
+
+        plt.show()
 
     def _init(self):
         """

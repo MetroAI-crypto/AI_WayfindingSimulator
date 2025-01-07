@@ -22,7 +22,16 @@ class Coordinate:
         """
         self._position = self._random.uniform(self.__lower_boundary, self.__upper_boundary, 2)
 
-    
+    @property
+    def position(self) -> np.ndarray:
+        """
+        Get the coordinate's position
+
+        Returns:
+            numpy.ndarray: the Position
+        """
+        return self._position
+
     # Internal Getter
     @property
     def _position(self) -> np.ndarray:
@@ -52,7 +61,14 @@ class Coordinate:
     def __ne__(self, other) -> bool:
         return self.__value != other.value
 
-    
+    def __lt__(self, other) -> bool:
+        return self.__value < other.value
+
+    def __le__(self, other) -> bool:
+        return self.__value <= other.value
+
+    def __gt__(self, other) -> bool:
+        return self.__value > other.value
 
     def __ge__(self, other) -> bool:
         return self.__value >= other.value
