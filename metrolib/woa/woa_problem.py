@@ -34,7 +34,8 @@ class WOAProblem(ProblemBase):
         # And also update global_best_whale
         for _ in range(self.__iteration_number):
 
-     
+            # Update global best
+            global_best_whale = np.amin(self.__whales)
 
             random_whales = deepcopy(self._random.choice(self.__whales, size=len(self.__whales)))
             for whale, random_whale in zip(self.__whales, random_whales):
@@ -43,5 +44,6 @@ class WOAProblem(ProblemBase):
             # Add data for plot
             self._visualizer.add_data(positions=[whale.position for whale in self.__whales])
 
+        global_best_whale = np.amin(self.__whales)
         LOGGER.info('Last best solution="%s" at position="%s"', global_best_whale.value, global_best_whale.position)
         return global_best_whale
