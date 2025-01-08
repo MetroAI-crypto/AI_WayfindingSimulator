@@ -25,8 +25,14 @@ class Whale(Coordinate):
         c_vec = 2 * r_vec  # Equation 2.4
 
        
-   
-   
+    def __search_prey(self, rand_whale: Coordinate, a_vec: np.ndarray, c_vec: np.ndarray) -> None:
+        d_vec = np.linalg.norm(c_vec * rand_whale.position - self._position)  # Equation 2.7
+        self._position = rand_whale.position - a_vec * d_vec  # Equation 2.8
+
+    def __encircle_prey(self, prey: Coordinate, a_vec: np.ndarray, c_vec: np.ndarray):
+        d_vec = np.linalg.norm(c_vec * prey.position - self._position)  # Equation 2.1
+        self._position = prey.position - a_vec * d_vec  # Equation 2.2
+
     def __attack_prey(self, prey: Coordinate):
         d_vec = np.linalg.norm(prey.position - self._position)
         l_vec = self._random.uniform(size=2) # Here l is in [0, 1) although the paper suggests [0, 1]

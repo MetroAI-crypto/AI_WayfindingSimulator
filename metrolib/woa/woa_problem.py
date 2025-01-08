@@ -16,7 +16,12 @@ class WOAProblem(ProblemBase):
         """
         Initialize a new whale optimization algorithm problem.
         """
-        
+        super().__init__(**kwargs)
+        self.__iteration_number = kwargs['iteration_number']
+        self.__whales = [
+            Whale(**kwargs, bit_generator=self._random)
+            for _ in range(kwargs['whales'])
+        ]
 
         self._visualizer = BaseVisualizer(**kwargs)
         # Initialize visualizer for plotting
@@ -38,4 +43,5 @@ class WOAProblem(ProblemBase):
             # Add data for plot
             self._visualizer.add_data(positions=[whale.position for whale in self.__whales])
 
+        LOGGER.info('Last best solution="%s" at position="%s"', global_best_whale.value, global_best_whale.position)
         return global_best_whale
