@@ -27,6 +27,17 @@ def configure_parser(sub_parsers):
         help='Whale optimization algorithm for minimization problem')
 
     parser.add_argument(
+        '-f',
+        '--function',
+        type=str,
+        default='michalewicz',
+        help='''Choose the function that is used for searching the minimum.
+        Choices are any of the 2D or nD single objective functions available
+        in the 'landscapes' package (https://git.io/JTSFv). Example arguments:
+        'michalewicz', 'ackley', 'rastrigin'.''',
+        choices=[*FUNCTIONS],
+        metavar='')
+    parser.add_argument(
         '-u',
         '--upper-boundary',
         type=float,
