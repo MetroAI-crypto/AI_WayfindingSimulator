@@ -49,7 +49,25 @@ def configure_parser(sub_parsers):
         type=float,
         default=0.,
         help='Lower boundary of the function (default 0)')
-   
+    parser.add_argument(
+        '-n',
+        '--iteration-number',
+        type=int,
+        default=10,
+        help='Number of iterations to execute (default 10)')
+    parser.add_argument(
+        '-a',
+        '--a',
+        type=float,
+        default=1.,
+        help='Controls the search\'s spread. (default 1)')
+    parser.add_argument(
+        '-b',
+        '--b',
+        type=float,
+        default=.5,
+        help='Controls the shape of the spiral which whale\'s follow. (default 0.5)')
+
     parser.add_argument(
         'whales',
         type=int,

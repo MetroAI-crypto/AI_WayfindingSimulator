@@ -24,7 +24,16 @@ class Whale(Coordinate):
         a_vec = 2 * self.__a * r_vec - self.__a  # Equation 2.3
         c_vec = 2 * r_vec  # Equation 2.4
 
-       
+        if prob < 0.5:  # Equation 2.6
+            if np.linalg.norm(a_vec) < 1:
+                self.__encircle_prey(prey, a_vec, c_vec)
+            else:
+                self.__search_prey(rand_whale, a_vec, c_vec)
+        else:
+            self.__attack_prey(prey)
+
+        self.__a -= self.__a_step_size
+
     def __search_prey(self, rand_whale: Coordinate, a_vec: np.ndarray, c_vec: np.ndarray) -> None:
         d_vec = np.linalg.norm(c_vec * rand_whale.position - self._position)  # Equation 2.7
         self._position = rand_whale.position - a_vec * d_vec  # Equation 2.8
