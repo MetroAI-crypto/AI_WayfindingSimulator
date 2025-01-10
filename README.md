@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-<a href="https://x.com/mymetro_dot_io">Twitter</a>
+<a href="https://x.com/mymetro_dot_io">X/Twitter</a>
 <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
 <a href="https://www.mymetro.io/">Site</a>
 <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
@@ -31,8 +31,7 @@ This repository implements AI and Ant Colony Optimization algorithms to optimize
    - [Station Clustering](#station-clustering)  
    - [Graph Construction & Route-Finding](#graph-construction--route-finding)  
 4. [API Overview](#api-overview)  
-5. [Advanced Usage](#advanced-usage)  
-6. [Roadmap](#roadmap)  
+
 ---
 
 ## Features
@@ -110,28 +109,3 @@ swarm --version
   - `logs` (optional): any textual logs of the route  
 
 ---
-
-## Advanced Usage
-
-1. **Custom Route Selection**  
-   Override the neighbor selection logic to implement your own BFS/DFS, or integrate with advanced AI decisions.
-
-2. **Integration With Larger Systems**  
-   Embedding **metrolib** into a GUI, a simulation platform, or a data pipeline is straightforward. The library is lightweight and easily extended.
-
-3. **Adaptive Thresholding**  
-   Adjust clustering thresholds dynamically based on AI-generated station density or other metrics.
-
----
-
-## Roadmap
-
-- **Weighted Paths**  
-  Incorporate distances or custom costs for edges, enabling more realistic route selection.
-
-- **Enhanced Clustering**  
-  Evaluate advanced algorithms (DBSCAN, k-means) if threshold-based solutions are insufficient.
-
-- **AI Integration**  
-  - Integrate advanced route selection (e.g., reinforcement learning).  
-  - Refine station generation with different neural models or generative adversarial networks.
