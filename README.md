@@ -8,16 +8,6 @@
 </p>
 
 <p align="center">
-    <a href="" target="_blank">
-        <img alt="Python" src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54" />
-        <img alt="Version" src="https://img.shields.io/pypi/v/swarms?style=for-the-badge&color=3670A0">
-    </a>
-    [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-    [![Rust](https://img.shields.io/badge/language-python-orange.svg)](https://www.python.org/)
-    [![GitHub issues](https://img.shields.io/github/issues/MetroAI-crypto/mymetro/)](https://github.com/MetroAI-crypto/mymetro/issues)
-    [![GitHub stars](https://img.shields.io/github/stars/MetroAI-crypto/mymetro/?style=social)](https://github.com/MetroAI-crypto/mymetro/)
-</p>
-<p align="center">
 <a href="https://x.com/mymetro_dot_io">Twitter</a>
 <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
 <a href="https://www.mymetro.io/">Site</a>
