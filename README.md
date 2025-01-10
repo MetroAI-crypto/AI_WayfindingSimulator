@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://swarms.world">
-    <img src="./doc/logo.jpg" style="margin: 15px; max-width: 150px" width="50%" alt="Logo">
+    <img src="./doc/logo.jpg" style="margin: 15px; max-width: 150px" width="25%" alt="Logo">
   </a>
 </div>
 <p align="center">
